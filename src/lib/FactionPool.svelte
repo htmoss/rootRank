@@ -42,6 +42,16 @@
 			name: 'Underground Duchy',
 			image: './factions/duchy.png',
 		},
+		{
+			id: 'keepers',
+			name: 'Keepers in Iron',
+			image: './factions/keepers.png',
+		},
+		{
+			id: 'hundreds',
+			name: 'Lord of the Hundreds',
+			image: './factions/hundreds.png',
+		},
 	];
 
 	let factionPool;
