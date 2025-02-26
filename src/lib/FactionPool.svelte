@@ -5,42 +5,42 @@
 		{
 			id: 'marquise',
 			name: 'Marquise de Cat',
-			image: '/factions/marquise.png',
+			image: './factions/marquise.png',
 		},
 		{
 			id: 'eyrie',
 			name: 'Eyrie Dynasties',
-			image: '/factions/eyrie.png',
+			image: './factions/eyrie.png',
 		},
 		{
 			id: 'woodland',
 			name: 'Woodland Alliance',
-			image: '/factions/woodland.png',
+			image: './factions/woodland.png',
 		},
 		{
 			id: 'vagabond',
 			name: 'Vagabond',
-			image: '/factions/vagabond.png',
+			image: './factions/vagabond.png',
 		},
 		{
 			id: 'riverfolk',
 			name: 'Riverfolk Company',
-			image: '/factions/riverfolk.png',
+			image: './factions/riverfolk.png',
 		},
 		{
 			id: 'lizard',
 			name: 'Lizard Cult',
-			image: '/factions/lizard.png',
+			image: './factions/lizard.png',
 		},
 		{
 			id: 'corvid',
 			name: 'Corvid Conspiracy',
-			image: '/factions/corvid.png',
+			image: './factions/corvid.png',
 		},
 		{
 			id: 'duchy',
 			name: 'Underground Duchy',
-			image: '/factions/duchy.png',
+			image: './factions/duchy.png',
 		},
 	];
 
@@ -82,9 +82,9 @@
 		// Use html2canvas to capture the tier list
 		import('html2canvas').then((module) => {
 			const html2canvas = module.default;
-			html2canvas(tierList, {
+			html2canvas(/** @type {HTMLElement} */ (tierList), {
 				backgroundColor: null,
-				scale: 2, // Higher quality
+				scale: 2,
 			}).then((canvas) => {
 				const link = document.createElement('a');
 				link.download = 'root-tier-list.png';
