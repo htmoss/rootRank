@@ -126,7 +126,8 @@
 
 <style>
 	.faction-pool {
-		width: 800px;
+		width: 100%;
+		max-width: 800px;
 		margin: 20px auto;
 		padding: 20px;
 		background-color: rgba(44, 44, 44, 0.9);
@@ -135,42 +136,45 @@
 		flex-wrap: wrap;
 		gap: 10px;
 		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		justify-content: center;
 	}
 
 	.faction-card {
-		width: 120px;
-		padding: 10px;
+		width: 100px;
+		padding: 8px;
 		border-radius: 4px;
 		cursor: move;
 		text-align: center;
 	}
 
 	.faction-card img {
-		width: 100px;
-		height: 100px;
+		width: 80px;
+		height: 80px;
 		object-fit: contain;
 		border-radius: 4px;
 	}
 
 	.faction-card span {
 		display: block;
-		margin-top: 5px;
-		font-size: 14px;
+		margin-top: 4px;
+		font-size: 12px;
 		color: #fff;
 		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 	}
 
 	.button-container {
-		width: 800px;
+		width: 100%;
+		max-width: 800px;
 		margin: 20px auto;
+		padding: 0 10px;
 		display: flex;
 		gap: 10px;
 		justify-content: center;
 	}
 
 	button {
-		padding: 10px 20px;
-		font-size: 16px;
+		padding: 8px 16px;
+		font-size: 14px;
 		border: none;
 		border-radius: 4px;
 		background-color: #4a4a4a;
@@ -179,7 +183,29 @@
 		transition: background-color 0.2s;
 	}
 
-	button:hover {
-		background-color: #5a5a5a;
+	@media (max-width: 768px) {
+		.faction-pool {
+			margin: 10px;
+			padding: 10px;
+			gap: 5px;
+		}
+
+		.faction-card {
+			width: 80px;
+			padding: 5px;
+		}
+
+		.faction-card img {
+			width: 60px;
+			height: 60px;
+		}
+
+		.faction-card span {
+			font-size: 10px;
+		}
+
+		.button-container {
+			margin: 10px;
+		}
 	}
 </style>

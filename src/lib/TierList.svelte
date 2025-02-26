@@ -38,7 +38,8 @@
 
 <style>
 	.tier-list {
-		width: 800px;
+		width: 100%;
+		max-width: 800px;
 		margin: 20px auto;
 		background: rgba(159, 159, 159, 0.9);
 		padding: 10px;
@@ -48,18 +49,18 @@
 
 	.tier-row {
 		display: flex;
-		min-height: 100px;
+		min-height: 80px;
 		margin-bottom: 4px;
 		border-radius: 4px;
 		background-color: #2c2c2c;
 	}
 
 	.tier-label {
-		width: 100px;
+		width: 60px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-size: 24px;
+		font-size: 20px;
 		font-weight: bold;
 		border-radius: 4px 0 0 4px;
 		color: #fff;
@@ -68,9 +69,25 @@
 
 	.tier-content {
 		flex-grow: 1;
-		padding: 10px;
+		padding: 5px;
 		display: flex;
 		flex-wrap: wrap;
-		gap: 10px;
+		gap: 5px;
+	}
+
+	@media (max-width: 768px) {
+		.tier-list {
+			margin: 10px;
+			padding: 5px;
+		}
+
+		.tier-row {
+			min-height: 60px;
+		}
+
+		.tier-label {
+			width: 40px;
+			font-size: 16px;
+		}
 	}
 </style>

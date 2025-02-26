@@ -3,6 +3,10 @@
 	import FactionPool from './lib/FactionPool.svelte';
 </script>
 
+<svelte:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</svelte:head>
+
 <div class="background"></div>
 
 <main>
@@ -25,7 +29,7 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-image: url('/forest-background.png');
+		background-image: url('./forest-background.png');
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
@@ -34,15 +38,29 @@
 	}
 
 	main {
+		width: 100%;
 		max-width: 900px;
 		margin: 0 auto;
 		padding: 20px;
 		position: relative;
+		box-sizing: border-box;
 	}
 
 	h1 {
 		text-align: center;
 		color: #fff;
 		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+		font-size: 2rem;
+		margin: 1rem 0;
+	}
+
+	@media (max-width: 768px) {
+		main {
+			padding: 10px;
+		}
+
+		h1 {
+			font-size: 1.5rem;
+		}
 	}
 </style>
