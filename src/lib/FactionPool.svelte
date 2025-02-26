@@ -96,10 +96,34 @@
 				backgroundColor: null,
 				scale: 2,
 			}).then((canvas) => {
-				const link = document.createElement('a');
-				link.download = 'root-tier-list.png';
-				link.href = canvas.toDataURL();
-				link.click();
+				// For mobile devices
+				if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+					canvas.toBlob((blob) => {
+						const file = new File([blob], 'root-tier-list.png', {
+							type: 'image/png',
+						});
+						if (navigator.share && navigator.canShare({ files: [file] })) {
+							navigator
+								.share({
+									files: [file],
+									title: 'Root Tier List',
+								})
+								.catch(console.error);
+						} else {
+							// Fallback for older devices
+							const link = document.createElement('a');
+							link.download = 'root-tier-list.png';
+							link.href = canvas.toDataURL();
+							link.click();
+						}
+					}, 'image/png');
+				} else {
+					// For desktop
+					const link = document.createElement('a');
+					link.download = 'root-tier-list.png';
+					link.href = canvas.toDataURL();
+					link.click();
+				}
 			});
 		});
 	}
