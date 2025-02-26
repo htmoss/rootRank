@@ -1,4 +1,6 @@
 <script>
+	import { onMount } from 'svelte';
+
 	const factions = [
 		{
 			id: 'marquise',
@@ -42,6 +44,13 @@
 		},
 	];
 
+	let factionPool;
+
+	onMount(() => {
+		// Store initial state of pool for reset functionality
+		factionPool = document.querySelector('.faction-pool');
+	});
+
 	function handleDragStart(e, faction) {
 		e.dataTransfer.setData('faction', faction.id);
 	}
@@ -58,6 +67,32 @@
 			e.currentTarget.appendChild(faction);
 		}
 	}
+
+	function resetTierList() {
+		const allFactions = document.querySelectorAll('.faction-card');
+		allFactions.forEach((faction) => {
+			factionPool.appendChild(faction);
+		});
+	}
+
+	function saveTierList() {
+		const tierList = document.querySelector('.tier-list');
+		if (!tierList) return;
+
+		// Use html2canvas to capture the tier list
+		import('html2canvas').then((module) => {
+			const html2canvas = module.default;
+			html2canvas(tierList, {
+				backgroundColor: null,
+				scale: 2, // Higher quality
+			}).then((canvas) => {
+				const link = document.createElement('a');
+				link.download = 'root-tier-list.png';
+				link.href = canvas.toDataURL();
+				link.click();
+			});
+		});
+	}
 </script>
 
 <div class="faction-pool" on:dragover={handleDragOver} on:drop={handleDrop}>
@@ -72,6 +107,11 @@
 			<span>{faction.name}</span>
 		</div>
 	{/each}
+</div>
+
+<div class="button-container">
+	<button on:click={resetTierList}>Reset Tier List</button>
+	<button on:click={saveTierList}>Save as Image</button>
 </div>
 
 <style>
@@ -108,5 +148,28 @@
 		font-size: 14px;
 		color: #fff;
 		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+	}
+
+	.button-container {
+		width: 800px;
+		margin: 20px auto;
+		display: flex;
+		gap: 10px;
+		justify-content: center;
+	}
+
+	button {
+		padding: 10px 20px;
+		font-size: 16px;
+		border: none;
+		border-radius: 4px;
+		background-color: #4a4a4a;
+		color: white;
+		cursor: pointer;
+		transition: background-color 0.2s;
+	}
+
+	button:hover {
+		background-color: #5a5a5a;
 	}
 </style>
